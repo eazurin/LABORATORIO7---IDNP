@@ -1,0 +1,3 @@
+Edificio1,Histórico,"Descripción del edificio 1",R.drawable.edificio1
+Edificio2,Moderno,"Descripción del edificio 2",R.drawable.edificio2
+Edificio3,Residencial,"Descripción del edificio 3",R.drawable.edificio3
