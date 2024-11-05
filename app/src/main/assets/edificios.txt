@@ -1,3 +1,4 @@
-Edificio1,Histórico,"Descripción del edificio 1",R.drawable.edificio1
-Edificio2,Moderno,"Descripción del edificio 2",R.drawable.edificio2
-Edificio3,Residencial,"Descripción del edificio 3",R.drawable.edificio3
+Catedral de Arequipa,Histórico,"Una majestuosa catedral construida en el siglo XVII, de arquitectura neoclásica y hecha de sillar blanco.",R.drawable.catedral_arequipa
+Monasterio de Santa Catalina,Histórico,"Un convento y una ciudadela de claustros coloniales y calles angostas, fundado en 1579.",R.drawable.santa_catalina
+Mundo Alpaca,Moderno,"Centro cultural y turístico dedicado a la industria textil de alpaca, con exhibiciones y actividades interactivas.",R.drawable.mundo_alpaca
+
