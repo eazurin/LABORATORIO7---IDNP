@@ -1,4 +1,5 @@
-Catedral de Arequipa,Histórico,"Una majestuosa catedral construida en el siglo XVII, de arquitectura neoclásica y hecha de sillar blanco.",R.drawable.catedral_arequipa
-Monasterio de Santa Catalina,Histórico,"Un convento y una ciudadela de claustros coloniales y calles angostas, fundado en 1579.",R.drawable.santa_catalina
-Mundo Alpaca,Moderno,"Centro cultural y turístico dedicado a la industria textil de alpaca, con exhibiciones y actividades interactivas.",R.drawable.mundo_alpaca
+Catedral de Arequipa,Histórico,"Una majestuosa catedral construida en el siglo XVII, de arquitectura neoclásica y hecha de sillar blanco."
+Monasterio de Santa Catalina,Histórico,"Un convento y una ciudadela de claustros coloniales y calles angostas, fundado en 1579."
+Mundo Alpaca,Moderno,"Centro cultural y turístico dedicado a la industria textil de alpaca, con exhibiciones y actividades interactivas."
+
 

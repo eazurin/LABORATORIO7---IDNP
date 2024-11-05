@@ -9,6 +9,7 @@ import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.List;
+import android.util.Log;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -29,20 +30,38 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void cargarEdificios() {
+
+        int[] imagenesResIds = {
+                R.drawable.catedral_arequipa,
+                R.drawable.santa_catalina,
+                R.drawable.mundo_alpaca
+
+        };
+
         try {
             BufferedReader reader = new BufferedReader(new InputStreamReader(getAssets().open("edificios.txt")));
             String line;
+            int index = 0;
+
             while ((line = reader.readLine()) != null) {
                 String[] parts = line.split(",");
-                String titulo = parts[0];
-                String categoria = parts[1];
-                String descripcion = parts[2];
-                int imagenResId = getResources().getIdentifier(parts[3], "drawable", getPackageName());
+                String titulo = parts[0].trim();
+                String categoria = parts[1].trim();
+                String descripcion = parts[2].trim();
+
+
+                int imagenResId = (index < imagenesResIds.length) ? imagenesResIds[index] : R.drawable.catedral_arequipa;
+
+
                 edificios.add(new Edificio(titulo, categoria, descripcion, imagenResId));
+
+                index++;
             }
             reader.close();
         } catch (Exception e) {
             e.printStackTrace();
         }
     }
+
+
 }
