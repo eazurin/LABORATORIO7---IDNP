@@ -1,20 +1,23 @@
 package com.example.laboratorio7;
 
-import android.content.Context;
 import android.os.Bundle;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+import android.text.Editable;
+import android.text.TextWatcher;
+import android.widget.EditText;
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.List;
-import android.util.Log;
 
 public class MainActivity extends AppCompatActivity {
 
     private RecyclerView recyclerView;
+    private EdificioAdapter adapter;
     private List<Edificio> edificios = new ArrayList<>();
+    private List<Edificio> edificiosFiltrados = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,17 +28,31 @@ public class MainActivity extends AppCompatActivity {
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
         cargarEdificios();
-        EdificioAdapter adapter = new EdificioAdapter(edificios);
+        edificiosFiltrados.addAll(edificios);
+
+        adapter = new EdificioAdapter(edificiosFiltrados);
         recyclerView.setAdapter(adapter);
+
+        EditText searchBar = findViewById(R.id.searchBar);
+        searchBar.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {}
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                filtrar(s.toString());
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {}
+        });
     }
 
     private void cargarEdificios() {
-
         int[] imagenesResIds = {
                 R.drawable.catedral_arequipa,
                 R.drawable.santa_catalina,
                 R.drawable.mundo_alpaca
-
         };
 
         try {
@@ -49,12 +66,9 @@ public class MainActivity extends AppCompatActivity {
                 String categoria = parts[1].trim();
                 String descripcion = parts[2].trim();
 
-
                 int imagenResId = (index < imagenesResIds.length) ? imagenesResIds[index] : R.drawable.catedral_arequipa;
 
-
                 edificios.add(new Edificio(titulo, categoria, descripcion, imagenResId));
-
                 index++;
             }
             reader.close();
@@ -63,5 +77,17 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-
+    private void filtrar(String texto) {
+        edificiosFiltrados.clear();
+        if (texto.isEmpty()) {
+            edificiosFiltrados.addAll(edificios);
+        } else {
+            for (Edificio edificio : edificios) {
+                if (edificio.getTitulo().toLowerCase().contains(texto.toLowerCase())) {
+                    edificiosFiltrados.add(edificio);
+                }
+            }
+        }
+        adapter.notifyDataSetChanged();
+    }
 }
